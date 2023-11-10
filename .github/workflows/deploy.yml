@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy ${{ github.event.ref }}
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@master
+
+      - name: 📂 Sync files (Production)
+        uses: SamKirkland/FTP-Deploy-Action@master
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: "sistemas/sorteio/app/"
