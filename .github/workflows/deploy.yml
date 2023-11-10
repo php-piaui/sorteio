@@ -20,3 +20,20 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: "sistemas/sorteio/app/"
+
+  ssh-action:
+    needs: deploy
+    name: SSH Action on Sorteio
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd sistemas/sorteio/app/
+            composer install
+            composer update
