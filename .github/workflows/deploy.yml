@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@master
+        token: ${{ github.token }}
 
       - name: 📂 Sync files (Production)
         uses: SamKirkland/FTP-Deploy-Action@master
