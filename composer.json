@@ -1,0 +1,14 @@
+{
+    "name": "php-piaui/sorteio",
+    "description": "SFA - Single File Aplication (hehe)",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PhpPiaui\\Sorteio\\": "src/"
+        }
+    },
+    "minimum-stability": "beta",
+    "require": {
+        "box/spout": "^3.3"
+    }
+}
